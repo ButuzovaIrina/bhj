@@ -17,12 +17,27 @@ class Game {
   }
 
   registerEvents() {
-    /*
+    let keyValue;
+    let keyCurrtnt = this.currentSymbol.textContent.toLowerCase();
+    let f = () => this.fail;
+    let succ = () => this.success();
+    function updatePlayer(event) {
+      keyValue = String.fromCharCode(event.keyCode).toLowerCase();  
+        if (keyCurrtnt === keyValue) {
+        console.log(keyCurrtnt, keyValue); 
+        succ();
+      } else {
+        f();
+      }
+    }
+    document.addEventListener('keydown', updatePlayer);
+        /*
       TODO:
       Написать обработчик события, который откликается
       на каждый введённый символ.
       В случае правильного ввода слова вызываем this.success()
       При неправильном вводе символа - this.fail();
+    
      */
   }
 
