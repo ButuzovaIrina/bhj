@@ -1,26 +1,17 @@
-let elementList;
+let elementList, el;
 elementList = Array.from (document.getElementsByClassName("menu__link"));
 console.log(elementList);
 
-elementList.forEach.call( elementList, function(el) {
-    el.onclick = function () {
-      if (el.closest("ul")) {
-    console.log(el.closest("ul").className);
-        el.closest("ul").className = "menu menu_sub menu_active";
-        console.log(el.closest("ul").className);
-        return false;
-      } 
+function addSelectedClassIfClick() {
+  if (this.nextElementSibling.classList.contains("menu_sub")) {
+    if (document.querySelector("ul.menu.menu_sub.menu_active") !== null) {
+      document.querySelector("ul.menu.menu_sub.menu_active").classList.toggle("menu_active");
     }
-})
-/*
-//querySelectorAll();
- /выбираем нужные элементы
-var a = document.querySelectorAll('.link');
-    
-//перебираем все найденные элементы и вешаем на них события
-[].forEach.call( a, function(el) {
-    //вешаем событие
-    el.onclick = function(e) {
-        //производим действия
-    }
-})*/
+    event.preventDefault();
+    this.nextElementSibling.classList.toggle("menu_active");
+  } 
+}
+
+for (el of elementList) {
+  el.onclick = addSelectedClassIfClick;
+}
