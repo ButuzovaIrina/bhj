@@ -17,18 +17,14 @@ class Game {
   }
 
   registerEvents() {
-    let keyValue;
-    let keyCurrtnt = this.currentSymbol.textContent.toLowerCase();
-    let f = () => this.fail;
-    let succ = () => this.success();
-    function updatePlayer(event) {
-      keyValue = String.fromCharCode(event.keyCode).toLowerCase();  
+    let updatePlayer = (event) => {
+      let keyCurrtnt = this.currentSymbol.textContent.toLowerCase();
+      let keyValue = String.fromCharCode(event.keyCode).toLowerCase();  
         if (keyCurrtnt === keyValue) {
-        console.log(keyCurrtnt, keyValue); 
-        succ();
-      } else {
-        f();
-      }
+          this.success();
+        } else {
+          this.fail();
+        }
     }
     document.addEventListener('keydown', updatePlayer);
         /*
