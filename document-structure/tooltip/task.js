@@ -1,12 +1,15 @@
 let textPrompt = Array.from(document.querySelectorAll(".has-tooltip"));
 
 function viewPrompt() {
-  let existPrompt = Array.from(document.getElementsByClassName("tooltip_active")); 
-  console.log(existPrompt[0]);
+  let existPrompt = Array.from(document.getElementsByClassName("tooltip_active"))[0]; 
+  
   event.preventDefault(); 
-  if (existPrompt[0] !== undefined) {
-    existPrompt[0].classList.remove("tooltip_active"); 
-    event.preventDefault();
+  if (existPrompt !== undefined) {
+
+    existPrompt.classList.remove("tooltip_active");
+    if (existPrompt.textContent == this.title){
+      return false;
+    }
   }
   let promptElem = document.createElement("div");
   promptElem.classList.add("tooltip", "tooltip_active");
