@@ -20,6 +20,7 @@ submitBtn.addEventListener("click", () => {
         if (data.success === true) {    
           localStorage.setItem("user_id", data.user_id);
           document.getElementById("user_id").textContent = data.user_id;
+          activeWind.classList.remove("signin_active");
           document.getElementById("welcome").classList.add("welcome_active");
       } else {
           alert("Неверный логин/пароль");
