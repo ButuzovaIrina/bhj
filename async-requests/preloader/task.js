@@ -6,10 +6,11 @@ xhr.send();
       let queryGet = document.getElementById("loader");
       queryGet.classList.remove("loader_active");
       let valueResp = JSON.parse(xhr.responseText);
-      let answerDiv = document.getElementsByClassName("item")[0];
+      let answerDiv = document.getElementById("items");
       let arrayQuery = valueResp.response.Valute;
       for (let key in arrayQuery){
-        let pasteDivs= `
+        let pasteDivs= ` 
+        <div class="item">
           <div class="item__code">
             ${arrayQuery[key].CharCode}
           </div>
@@ -19,8 +20,11 @@ xhr.send();
           <div class="item__currency">
             руб.
           </div>
-        `;
+        </div>`;  
+
         answerDiv.insertAdjacentHTML("beforeEnd", pasteDivs);
       }
+ //document.getElementsByClassName("item")[0].style.display = "flex";
+// document.getElementsByClassName("item__value")[0].style.display = "";
     } 
   })
